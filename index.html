@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Simulateur Patrimoine & Art</title>
   <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
 </head>
 <body>
   <div class="wrapper">
@@ -12,11 +14,6 @@
       <h1>Simulateur d'intégration de l'art dans un patrimoine</h1>
 
       <form id="simulateur-form">
-        <div class="form-group">
-          <label for="patrimoine">Valeur totale du patrimoine (€)</label>
-          <input type="number" id="patrimoine" required />
-        </div>
-
         <fieldset>
           <legend>Répartition actuelle du patrimoine (%)</legend>
 
@@ -47,7 +44,6 @@
 
           <p id="total-percent">Total : 0%</p>
           <p id="total-warning" class="warning"></p>
-
         </fieldset>
 
         <div class="form-group">
@@ -79,5 +75,7 @@
   </div>
 
   <script src="dist/main.js"></script>
+
+
 </body>
 </html>
