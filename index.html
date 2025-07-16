@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Simulateur Patrimoine & Art</title>
   <link rel="stylesheet" href="style.css" />
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
   <div class="container">
@@ -69,19 +68,23 @@
         </div>
 
         <button type="submit">
-          Estimer
-          <span class="arrow">→</span>
+          Estimer <span class="arrow">→</span>
         </button>
       </form>
 
       <div id="resultat"></div>
     </div>
 
-    <div class="image-section">
-      <img src="patrimoine.jpg" alt="Patrimoine artistique" />
+    <div class="visual-section">
+      <div class="image-wrapper">
+        <img src="images/joinUs-1.webp" alt="Portrait artwork" class="art-img art-main" />
+        <img src="images/joinUs-2.webp" alt="Abstract artwork" class="art-img art-overlay" />
+      </div>
     </div>
   </div>
 
-  <script src="dist/main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="dist/main.js"></script>
+
 </body>
 </html>
