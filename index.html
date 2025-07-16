@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simulateur Patrimoine & Art</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="wrapper">
+    <div class="form-container">
+      <h1>Simulateur d'intégration de l'art dans un patrimoine</h1>
+
+      <form id="simulateur-form">
+        <div class="form-group">
+          <label for="patrimoine">Valeur totale du patrimoine (€)</label>
+          <input type="number" id="patrimoine" required />
+        </div>
+
+        <fieldset>
+          <legend>Répartition actuelle du patrimoine (%)</legend>
+
+          <div class="form-group">
+            <label for="immobilier">Immobilier</label>
+            <input type="number" id="immobilier" value="0" min="0" max="100" />
+          </div>
+
+          <div class="form-group">
+            <label for="liquidites">Liquidités</label>
+            <input type="number" id="liquidites" value="0" min="0" max="100" />
+          </div>
+
+          <div class="form-group">
+            <label for="financier">Produits financiers</label>
+            <input type="number" id="financier" value="0" min="0" max="100" />
+          </div>
+
+          <div class="form-group">
+            <label for="crypto">Crypto / Actifs numériques</label>
+            <input type="number" id="crypto" value="0" min="0" max="100" />
+          </div>
+
+          <div class="form-group">
+            <label for="tangibles">Biens tangibles (art, or, vin, etc.)</label>
+            <input type="number" id="tangibles" value="0" min="0" max="100" />
+          </div>
+
+          <p id="total-percent">Total : 0%</p>
+          <p id="total-warning" class="warning"></p>
+
+        </fieldset>
+
+        <div class="form-group">
+          <label for="profil">Profil investisseur</label>
+          <select id="profil" required>
+            <option value="">-- Choisir --</option>
+            <option value="Prudent">Prudent</option>
+            <option value="Équilibré">Équilibré</option>
+            <option value="Dynamique">Dynamique</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="objectif">Objectif patrimonial</label>
+          <select id="objectif" required>
+            <option value="">-- Choisir --</option>
+            <option value="Diversification">Diversification</option>
+            <option value="Transmission">Transmission</option>
+            <option value="Fiscalité">Fiscalité</option>
+            <option value="Passion">Passion</option>
+          </select>
+        </div>
+
+        <button type="submit">Estimer</button>
+      </form>
+
+      <div id="resultat"></div>
+    </div>
+  </div>
+
+  <script src="dist/main.js"></script>
+</body>
+</html>

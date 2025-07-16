@@ -1,0 +1,135 @@
+:root {
+  --background: #131313;
+  --card: #1d1c1c;
+  --primary: #6052ff;
+  --primary-hover: #7a6cff;
+  --text: #ffffff;
+  --accent: #c084fc;
+  --font-bricolage: 'Bricolage Grotesque', serif;
+  --font-unbounded: 'Unbounded', sans-serif;
+}
+
+body {
+  font-family: var(--font-unbounded), sans-serif;
+  background-color: var(--background);
+  color: var(--text);
+  margin: 0;
+  padding: 0;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 20px;
+}
+
+.form-container {
+  background-color: var(--card);
+  padding: 40px;
+  border-radius: 1.5rem;
+  max-width: 600px;
+  width: 100%;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  border: 1px solid #2c2c2c;
+}
+
+h1 {
+  text-align: center;
+  color: var(--text);
+  margin-bottom: 30px;
+  font-size: 2rem;
+  font-family: var(--font-bricolage);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  font-weight: 600;
+  margin-bottom: 8px;
+  display: block;
+  color: #ccc;
+}
+
+input[type="number"],
+select {
+  padding: 14px;
+  width: 100%;
+  border: 2px solid #333;
+  border-radius: 10px;
+  background-color: #1f1f1f;
+  color: var(--text);
+  font-size: 1rem;
+  font-family: var(--font-unbounded);
+}
+
+fieldset {
+  border: 1px solid #444;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 25px;
+}
+
+legend {
+  font-weight: bold;
+  color: var(--accent);
+  margin-bottom: 15px;
+}
+
+#total-percent,
+#total-warning {
+  text-align: right;
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: #aaa;
+  margin-top: 10px;
+}
+
+.warning {
+  color: #ff6666;
+}
+
+button {
+  background: linear-gradient(to right, var(--primary), var(--primary-hover));
+  color: white;
+  border: none;
+  padding: 14px;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-family: var(--font-unbounded);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+button:hover {
+  background: linear-gradient(to right, var(--primary-hover), var(--primary));
+}
+
+#resultat {
+  margin-top: 30px;
+  padding: 20px;
+  background-color: #232323;
+  border-left: 5px solid var(--primary);
+  border-radius: 8px;
+  font-weight: 500;
+  color: var(--accent);
+  line-height: 1.6;
+  font-family: var(--font-bricolage);
+}
+
+@media (max-width: 600px) {
+  .form-container {
+    padding: 24px;
+  }
+  h1 {
+    font-size: 1.5rem;
+  }
+}
