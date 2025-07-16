@@ -1,6 +1,9 @@
 type ProfilInvestisseur = 'Prudent' | 'Équilibré' | 'Dynamique';
 type Objectif = 'Diversification' | 'Transmission' | 'Fiscalité' | 'Passion';
 
+// 🔧 Permet à TypeScript de reconnaître Chart si tu utilises <script src="chart.js">
+declare const Chart: any;
+
 const matrice: Record<ProfilInvestisseur, Record<Objectif, [number, number]>> = {
   Prudent: {
     Diversification: [3, 5],
@@ -26,11 +29,11 @@ function estimerPartArt(
   profil: ProfilInvestisseur,
   objectif: Objectif,
   repartition: number[]
-): { texte: string; range: [number, number] } {
+): { texte: string; minAj: number; maxAj: number } {
   const [min, max] = matrice[profil][objectif];
   const concentration = Math.max(...repartition);
-  let ajustement = 0;
 
+  let ajustement = 0;
   if (concentration >= 80) ajustement = 2;
   else if (concentration >= 60) ajustement = 1;
 
@@ -39,7 +42,7 @@ function estimerPartArt(
 
   const texte = `🖼️ Sur la base de votre profil et de la concentration actuelle de votre patrimoine, nous vous recommandons d’allouer entre <strong>${minAj}%</strong> et <strong>${maxAj}%</strong> de votre patrimoine à l’art.`;
 
-  return { texte, range: [minAj, maxAj] };
+  return { texte, minAj, maxAj };
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -83,9 +86,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
     totalWarning!.textContent = "";
     const estimation = estimerPartArt(profil, objectif, repartition);
-    const texte = estimation.texte;
+    const { texte, minAj, maxAj } = estimation;
 
-    const labels = ["Immobilier", "Liquidités", "Financier", "Crypto", "Tangibles"];
+    const artMoyenne = Math.round((minAj + maxAj) / 2); // 🔥 moyenne en %
+    const totalSansArt = 100 - artMoyenne;
+
+    // 🔁 Répartition ajustée des 5 classes
+    const repartitionAjustee = repartition.map(val =>
+      Math.round((val * totalSansArt) / 100)
+    );
+
+    // ➕ Ajout de la part "Art recommandé"
+    repartitionAjustee.push(artMoyenne);
+
+    const labels = ["Immobilier", "Liquidités", "Financier", "Crypto", "Tangibles", "Art recommandé"];
+    const colors = ["#7E57C2", "#42A5F5", "#66BB6A", "#FFA726", "#EF5350", "#FFD54F"];
 
     resultat.innerHTML = `
       <p><strong>Résultat :</strong><br>${texte}</p>
@@ -99,9 +114,9 @@ document.addEventListener("DOMContentLoaded", () => {
         data: {
           labels: labels,
           datasets: [{
-            label: "Répartition",
-            data: repartition,
-            backgroundColor: ["#7E57C2", "#42A5F5", "#66BB6A", "#FFA726", "#EF5350"],
+            label: "Répartition ajustée",
+            data: repartitionAjustee,
+            backgroundColor: colors,
             borderWidth: 1
           }]
         },
