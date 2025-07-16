@@ -6,39 +6,40 @@
   <title>Simulateur Patrimoine & Art</title>
   <link rel="stylesheet" href="style.css" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  
 </head>
 <body>
-  <div class="wrapper">
-    <div class="form-container">
-      <h1>Simulateur d'intégration de l'art dans un patrimoine</h1>
+  <div class="container">
+    <div class="form-section">
+      <h1>Simulateur d'intégration<br>de l'art dans un patrimoine</h1>
 
       <form id="simulateur-form">
         <fieldset>
           <legend>Répartition actuelle du patrimoine (%)</legend>
 
-          <div class="form-group">
-            <label for="immobilier">Immobilier (Résidences principales, locatifs)</label>
-            <input type="number" id="immobilier" value="0" min="0" max="100" />
+          <div class="grid-2">
+            <div class="form-group">
+              <label for="immobilier">Immobilier</label>
+              <input type="number" id="immobilier" value="0" min="0" max="100" />
+            </div>
+            <div class="form-group">
+              <label for="liquidites">Liquidités</label>
+              <input type="number" id="liquidites" value="0" min="0" max="100" />
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div class="form-group">
+              <label for="financier">Produits financiers</label>
+              <input type="number" id="financier" value="0" min="0" max="100" />
+            </div>
+            <div class="form-group">
+              <label for="crypto">Crypto / Actifs numériques</label>
+              <input type="number" id="crypto" value="0" min="0" max="100" />
+            </div>
           </div>
 
           <div class="form-group">
-            <label for="liquidites">Liquidités (Livrets, comptes courants)</label>
-            <input type="number" id="liquidites" value="0" min="0" max="100" />
-          </div>
-
-          <div class="form-group">
-            <label for="financier">Produits financiers 	(Actions, ETF, assurance-vie)</label>
-            <input type="number" id="financier" value="0" min="0" max="100" />
-          </div>
-
-          <div class="form-group">
-            <label for="crypto">Crypto / Actifs numériques (Bitcoin, Ethereum, NFTs)</label>
-            <input type="number" id="crypto" value="0" min="0" max="100" />
-          </div>
-
-          <div class="form-group">
-            <label for="tangibles">Biens tangibles (montre, or, vin, etc.)</label>
+            <label for="tangibles">Biens tangibles</label>
             <input type="number" id="tangibles" value="0" min="0" max="100" />
           </div>
 
@@ -67,15 +68,20 @@
           </select>
         </div>
 
-        <button type="submit">Estimer</button>
+        <button type="submit">
+          Estimer
+          <span class="arrow">→</span>
+        </button>
       </form>
 
       <div id="resultat"></div>
     </div>
+
+    <div class="image-section">
+      <img src="patrimoine.jpg" alt="Patrimoine artistique" />
+    </div>
   </div>
 
   <script src="dist/main.js"></script>
-
-
 </body>
 </html>
